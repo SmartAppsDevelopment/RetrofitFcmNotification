@@ -13,7 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 abstract class BaseActivity<T:ViewBinding>(@LayoutRes val layoutRes: Int) :AppCompatActivity(){
     lateinit var binding: T
-    abstract val viewModel:BaseViewModel
+    abstract val viewModel:ViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, layoutRes)

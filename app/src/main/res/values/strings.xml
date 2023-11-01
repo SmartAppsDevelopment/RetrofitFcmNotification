@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">TemplateSampleApp</string>
+    <string name="app_name">SmartAppsNotify</string>
+    <string name="dbinspector_launcher_name">Sample Debug</string>
 </resources>

@@ -14,16 +14,43 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.activmain.MainActivity">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_item_list"
-            app:list="@{viewModel.listOfItems}"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        <TextView
+            android:id="@+id/txt_logs"
+            android:textIsSelectable="true"
+            android:textAlignment="center"
+            android:scrollbars="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:listitem="@layout/sample_item">
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/bottonaction"
+            tools:text="adfaf"/>
 
-        </androidx.recyclerview.widget.RecyclerView>
+        <LinearLayout
+            android:id="@+id/bottonaction"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/btn_sendnotif"
+                android:text="Send Not Tray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/btn_sendnotifdata"
+                android:text="Send Data"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

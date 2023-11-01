@@ -11,7 +11,7 @@ android {
     compileSdk rootProject.targetSdkVersion
 
     defaultConfig {
-        applicationId "com.example.templatesampleapp"
+        applicationId "com.example.sendnotification.livesmartapps"
         minSdk rootProject.minSdkVersion
         targetSdk rootProject.targetSdkVersion
         versionCode 1
@@ -33,6 +33,11 @@ android {
     }
     buildFeatures {
         dataBinding true
+    }
+
+    packagingOptions{
+        exclude("META-INF/DEPENDENCIES")
+        exclude("META-INF/LICENSE")
     }
 }
 
@@ -70,5 +75,17 @@ dependencies {
     /////Koin Dependency Injection
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
+
+    implementation 'com.google.auth:google-auth-library-oauth2-http:1.20.0'
+//    implementation 'com.google.firebase:firebase-admin:9.2.0'
+
+    debugImplementation "com.github.chuckerteam.chucker:library:3.5.0"
+    releaseImplementation "com.github.chuckerteam.chucker:library-no-op:3.5.0"
+
+
+    debugImplementation "com.infinum.dbinspector:dbinspector:5.3.8"
+    releaseImplementation "com.infinum.dbinspector:dbinspector-no-op:5.3.8"
+    implementation 'commons-io:commons-io:2.11.0'
+
 
 }

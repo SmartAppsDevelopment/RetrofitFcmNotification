@@ -6,7 +6,7 @@ import com.example.templatesampleapp.model.SampleItem
 
 open class SampleViewHolder(binding: SampleItemBinding):BaseViewHolder<SampleItem,SampleItemBinding>(binding){
     override fun bind(model: SampleItem) {
-        binding.model= model
+        //binding.model= model
        /// binding.setVariable()
         binding.executePendingBindings()
     }
