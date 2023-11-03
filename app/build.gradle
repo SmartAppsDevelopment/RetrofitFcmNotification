@@ -45,13 +45,14 @@ dependencies {
 
     ///Android base libraries
     implementation ("androidx.core:core-ktx:$rootProject.androidCore")
-    implementation ("androidx.appcompat:appcompat:$rootProject.appCompatVersion")
+
     implementation ("com.google.android.material:material:$rootProject.materialVersion")
     implementation ("androidx.constraintlayout:constraintlayout:$rootProject.constraintLayout")
     implementation ("androidx.legacy:legacy-support-v4:$rootProject.legacySupport")
 
     //Room Database with flows
     implementation("androidx.room:room-runtime:$rootProject.roomVersion")
+    implementation project(path: ':searchdialog')
     annotationProcessor("androidx.room:room-compiler:$rootProject.roomVersion")
     // To use Kotlin annotation processing tool (kapt)
     kapt("androidx.room:room-compiler:$rootProject.roomVersion")
@@ -86,6 +87,7 @@ dependencies {
     debugImplementation "com.infinum.dbinspector:dbinspector:5.3.8"
     releaseImplementation "com.infinum.dbinspector:dbinspector-no-op:5.3.8"
     implementation 'commons-io:commons-io:2.11.0'
+//    implementation 'com.github.ajithvgiri:SearchDialog:v1.0'
 
 
 }

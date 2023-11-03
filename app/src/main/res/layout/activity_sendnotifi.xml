@@ -36,8 +36,10 @@
             app:hintAnimationEnabled="true"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/iv_body"
             app:layout_constraintTop_toBottomOf="@id/txt_inputlayout"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             >
 
@@ -56,8 +58,10 @@
             app:hintAnimationEnabled="true"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/iv_body"
             app:layout_constraintTop_toBottomOf="@id/txt_inputlayout2"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -67,6 +71,25 @@
                 android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+
+        <ImageView
+            android:id="@+id/iv_body"
+            app:layout_constraintTop_toTopOf="@id/txt_inputlayout3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/txt_inputlayout3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_more_vert_24"/>
+
+        <ImageView
+            android:id="@+id/iv_title"
+            app:layout_constraintTop_toTopOf="@id/txt_inputlayout2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/txt_inputlayout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_more_vert_24"/>
 
 
         <Button
@@ -96,21 +119,11 @@
             android:layout_marginHorizontal="8dp"
             android:textAllCaps="false"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/btn_opendb"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_width="0dp"
             android:layout_height="wrap_content"/>
 
-        <Button
-            android:id="@+id/btn_opendb"
-            android:text="Oopen DB"
-            android:onClick="openDb"
-            android:layout_marginHorizontal="8dp"
-            android:textAllCaps="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"/>
 
 
 

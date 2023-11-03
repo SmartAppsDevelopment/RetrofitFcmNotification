@@ -7,4 +7,10 @@
         android:orderInCategory="100"
         app:showAsAction="always"
         android:title="OpenFile" />
+    <item
+        android:id="@+id/menu_main_storage"
+        android:icon="@drawable/baseline_storage_24"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        android:title="Storage" />
 </menu>

@@ -11,6 +11,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
+import com.ajithvgiri.searchdialog.SearchListItem
+import com.ajithvgiri.searchdialog.SearchableDialog
 import com.example.templatesampleapp.R
 import com.example.templatesampleapp.base.BaseActivity
 import com.example.templatesampleapp.databinding.ActivitySendnotifiBinding
@@ -210,26 +212,54 @@ class SendNotifiActivity : BaseActivity<ActivitySendnotifiBinding>(R.layout.acti
                 }
             }
         }
+        binding.autocompletetxt.setOnTouchListener { view, motionEvent ->
+            binding.autocompletetxt.showDropDown()
+            false
+        }
+
+        binding.ivBody.setOnClickListener {
+            val bodylist=viewModel.getListofItems().distinctBy { it.body }.map { SearchListItem(it.hashCode().toInt(),it.body) }
+            val searchableDialog = SearchableDialog(this, bodylist, "List Body")
+            searchableDialog.setOnItemSelected { i, searchListItem ->
+                binding.edtBody.setText(searchListItem.title)
+            }
+            searchableDialog.show()
+        }
+        binding.ivTitle.setOnClickListener {
+            val bodylist=viewModel.getListofItems().distinctBy { it.title }.map { SearchListItem(it.hashCode().toInt(),it.title) }
+            val searchableDialog = SearchableDialog(this, bodylist, "List Title")
+            searchableDialog.setOnItemSelected { i, searchListItem ->
+                binding.edtTitle.setText(searchListItem.title)
+            }
+            searchableDialog.show()
+        }
     }
 
     fun setDataToTextView() {
         hashset = Constants.getListOfTopics(this)?.toHashSet() ?: HashSet()
         hashset?.let {
-            val items = it.toList()
+//            val items = it.toList()
+            val items = viewModel.getListofItems().distinctBy { it.topic }.map { it.topic }
             val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, items)
             binding.autocompletetxt.setAdapter(adapter)
         }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
+        getMenuInflater().inflate(R.menu.main_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 //        this.openFile()
-        getContent.launch("application/*")
-        showToast("SelectServiceAccount.json File ")
+
+        if(item.itemId==R.id.menu_main_storage){
+            DbInspector.show()
+        }else{
+            getContent.launch("application/*")
+            showToast("SelectServiceAccount.json File ")
+        }
+
 
         return super.onOptionsItemSelected(item)
     }
@@ -281,7 +311,7 @@ class SendNotifiActivity : BaseActivity<ActivitySendnotifiBinding>(R.layout.acti
 
 
     fun openDb(view: View) {
-        DbInspector.show()
+
     }
 
     fun isEmpty(vararg title: String): Boolean {

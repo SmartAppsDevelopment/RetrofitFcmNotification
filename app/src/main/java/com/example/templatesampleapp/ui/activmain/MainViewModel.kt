@@ -92,5 +92,11 @@ class MainViewModel @Inject constructor(val fcmRetroApiService: FcmRetroApiServi
     }
 
 
+    fun getListofItems()=db.userDao().getAll()
+
+
+
+
+
 
 }
