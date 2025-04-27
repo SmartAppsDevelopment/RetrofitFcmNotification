@@ -11,8 +11,10 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
+import com.ajithvgiri.searchdialog.OnSearchItemSelected
 import com.ajithvgiri.searchdialog.SearchListItem
 import com.ajithvgiri.searchdialog.SearchableDialog
+
 import com.example.templatesampleapp.R
 import com.example.templatesampleapp.base.BaseActivity
 import com.example.templatesampleapp.databinding.ActivitySendnotifiBinding
@@ -220,17 +222,26 @@ class SendNotifiActivity : BaseActivity<ActivitySendnotifiBinding>(R.layout.acti
         binding.ivBody.setOnClickListener {
             val bodylist=viewModel.getListofItems().distinctBy { it.body }.map { SearchListItem(it.hashCode().toInt(),it.body) }
             val searchableDialog = SearchableDialog(this, bodylist, "List Body")
-            searchableDialog.setOnItemSelected { i, searchListItem ->
-                binding.edtBody.setText(searchListItem.title)
-            }
+            searchableDialog.setOnItemSelected(object : OnSearchItemSelected{
+                override fun onClick(position: Int, searchListItem: SearchListItem) {
+                    binding.edtBody.setText(searchListItem.title)
+                }
+
+            })
+//            searchableDialog.setOnItemSelected { i, searchListItem ->
+//                binding.edtBody.setText(searchListItem.title)
+//            }
             searchableDialog.show()
         }
         binding.ivTitle.setOnClickListener {
             val bodylist=viewModel.getListofItems().distinctBy { it.title }.map { SearchListItem(it.hashCode().toInt(),it.title) }
             val searchableDialog = SearchableDialog(this, bodylist, "List Title")
-            searchableDialog.setOnItemSelected { i, searchListItem ->
-                binding.edtTitle.setText(searchListItem.title)
-            }
+            searchableDialog.setOnItemSelected(object : OnSearchItemSelected{
+                override fun onClick(position: Int, searchListItem: SearchListItem) {
+                    binding.edtTitle.setText(searchListItem.title)
+                }
+
+            })
             searchableDialog.show()
         }
     }

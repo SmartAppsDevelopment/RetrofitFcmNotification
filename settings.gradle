@@ -16,4 +16,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "TemplateSampleApp"
 include ':app'
+//include ':searchdialog'
 include ':searchdialog'
